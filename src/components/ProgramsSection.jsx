@@ -562,7 +562,7 @@ const ProgramsSection = () => {
                       <div className="bg-blue-50 p-1 rounded-full mr-2 mt-0.5 flex-shrink-0 group-hover:bg-blue-100 transition-colors">
                         <Check className="text-blue-500" size={14} />
                       </div>
-                      <span className="text-gray-700 text-sm group-hover:text-gray-900 transition-colors">
+                      <span className="text-gray-700 text-sm group-hover:texct-gray-900 transition-colors">
                         {highlight}
                       </span>
                     </li>

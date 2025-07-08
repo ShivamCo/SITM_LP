@@ -92,7 +92,7 @@ const AdmissionSection = () => {
           </div>
 
           {/* Application Form */}
-          <div className="bg-white p-2 sm:p-4 rounded-xl shadow-md sm:shadow-lg border border-gray-100 order-0 lg:order-none">
+          <div>
             <h3 className="text-xl  sm:text-2xl font-semibold mb-4 sm:mb-6 text-blue-800">
               Start Your Application
             </h3>
