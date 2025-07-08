@@ -438,7 +438,7 @@ const ProgramsSection = () => {
   };
 
   return (
-    <section className="py-12 md:py-20 px-4 sm:px-6 bg-gradient-to-b from-blue-50 to-white">
+    <section className="py-12 md:py-6 px-4 sm:px-6 bg-gradient-to-b from-blue-50 to-white">
     <div className="max-w-7xl items-center mx-auto">
       {/* Header Section */}
       <div className="text-center mb-10 md:mb-16">
@@ -584,15 +584,7 @@ const ProgramsSection = () => {
         ))}
       </div>
 
-      {/* CTA Button */}
-      <div className="mt-12 md:mt-16 text-center">
-        <button className="px-6 sm:px-8 py-3 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-sm sm:text-base font-medium rounded-lg shadow-md hover:shadow-lg transition-all hover:scale-105 transform flex items-center mx-auto group">
-          <a href="/#begin-journey" className="whitespace-nowrap">
-            Start Your Journey Now
-          </a>
-          <ArrowRight className="ml-2 h-4 w-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform group-hover:translate-x-1" />
-        </button>
-      </div>
+      
     </div>
   </section>
   );

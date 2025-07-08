@@ -9,7 +9,7 @@ const HeaderSection = () => {
       {/* Main Header Bar */}
       <div className="container mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo Section */}
-        <div className="flex items-center">
+        <a href="https://seglko.org/sitm/" target="_blank"  className="flex items-center">
           
             <img src="/logo.png" className="w-12  " />
           
@@ -17,7 +17,7 @@ const HeaderSection = () => {
             <h1 className="text-lg font-bold text-blue-800">SAROJ INSTITUTE</h1>
             <p className="text-xs text-gray-600  sm:block">Technology & Management</p>
           </div>
-        </div>
+        </a>
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
@@ -42,7 +42,8 @@ const HeaderSection = () => {
           </a>
 
           <a 
-            href="#begin-journey" 
+           href="https://seglko.in8.nopaperforms.com/"
+           target="_blank" 
             className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-700 transition text-sm font-medium"
           >
             Apply Now
@@ -103,7 +104,8 @@ const HeaderSection = () => {
             </a>
 
             <a 
-              href="#begin-journey" 
+              href="https://seglko.in8.nopaperforms.com/"
+              target="_blank" 
               className="block w-full text-center bg-blue-600 text-white px-4 py-3 rounded-md hover:bg-blue-700 transition font-medium"
             >
               Apply Now

@@ -117,7 +117,8 @@ const WhyChooseUs = () => {
           className="mt-16 text-center"
         >
           <a
-            href="#begin-journey"
+           href="https://seglko.in8.nopaperforms.com/"
+           target="_blank" 
             className="inline-block bg-gradient-to-r from-blue-600 to-blue-500 text-white px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 font-medium"
           >
             Start Your Journey Today
