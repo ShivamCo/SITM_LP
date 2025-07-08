@@ -1,50 +1,15 @@
 
 import { useEffect, useState } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { GraduationCap, FileText, Upload, Search ,Mail,   } from "lucide-react";
+
 
 const AdmissionSection = () => {
   const [scriptLoaded, setScriptLoaded] = useState(false)
   const [widgetLoaded, setWidgetLoaded] = useState(false)
   const [activeStep, setActiveStep] = useState(1)
 
- useEffect(() => {
-   let interval;
 
-  const checkWidgetLoaded = () => {
-    const widgetElement = document.querySelector(".npf_wgts");
-    if (widgetElement && widgetElement.innerHTML.trim().length > 100) {
-      setWidgetLoaded(true);
-      clearInterval(interval);
-    }
-  };
-
-  const loadScript = () => {
-    if (document.querySelector('script[src="https://widgets.in8.nopaperforms.com/emwgts.js"]')) {
-      setScriptLoaded(true);
-      interval = setInterval(checkWidgetLoaded, 500);
-      return;
-    }
-
-    const s = document.createElement("script");
-    s.type = "text/javascript";
-    s.async = true;
-    s.src = "https://widgets.in8.nopaperforms.com/emwgts.js";
-
-    s.onload = () => {
-      setScriptLoaded(true);
-      interval = setInterval(checkWidgetLoaded, 500);
-    };
-
-    s.onerror = () => console.error("Failed to load NoPaperForms script");
-    document.body.appendChild(s);
-  };
-
-  loadScript();
-
-  return () => {
-    if (interval) clearInterval(interval);
-  };
-}, []);
 
 
   const steps = [
@@ -73,6 +38,7 @@ const AdmissionSection = () => {
             className="w-24 h-1 bg-gradient-to-r from-[#e63946] to-[#1d3557] mx-auto rounded-full"
           ></motion.div>
           <p className="mt-4 text-gray-600">Begin your academic journey with us</p>
+          
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -122,58 +88,17 @@ const AdmissionSection = () => {
           </div>
 
           {/* Form Section */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col h-[580px]">
-            <div className="bg-gradient-to-r from-[#1d3557] to-[#e63946] p-4 text-white">
-              <div className="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <div>
-                  <h2 className="font-bold text-2xl ">Admissions 2025</h2>
-                  <p className="text-xs opacity-90">Limited seats available</p>
-                </div>
-              </div>
-            </div>
+         <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          viewport={{ once: true }}
+          className="lg:w-full  p-2 rounded-xl bg-white shadow-sm border border-gray-200"
+        >
+          <h3 className="text-xl font-bold text-blue-800 pt-4 px-4 mb-6">Admission {new Date().getFullYear()} - {new Date().getFullYear()+1} </h3>
 
-            <div className="flex-1 relative">
-              <div 
-                className="npf_wgts w-full h-full"
-                data-height="110%"
-                data-w="c4686ca3db50effadb9f24fc7ca22401"
-              ></div>
-
-              <AnimatePresence>
-                {!widgetLoaded && (
-                  <motion.div 
-                    initial={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="absolute inset-0 flex flex-col items-center justify-center bg-white p-6"
-                  >
-                    <div className="flex flex-col items-center">
-                      <motion.div 
-                        animate={{ rotate: 360 }}
-                        transition={{ repeat: Infinity, duration: 1, ease: "linear" }}
-                        className="w-10 h-10 border-3 border-[#e63946] border-t-transparent rounded-full mb-4"
-                      ></motion.div>
-                      <p className="text-gray-600 text-sm text-center">Loading application form...</p>
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-
-            <div className="bg-gray-50 p-3 border-t border-gray-200">
-              <div className="flex items-center justify-between text-xs text-gray-600">
-                <div className="flex items-center">
-                  <svg className="w-3 h-3 text-green-500 mr-1" fill="currentColor" viewBox="0 0 20 20">
-                    <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
-                  </svg>
-                  <span>Secure form</span>
-                </div>
-                <span>Application fee</span>
-              </div>
-            </div>
-          </div>
+          <div className="npf_wgts" data-height="500" data-w="c4686ca3db50effadb9f24fc7ca22401"></div>
+        </motion.div>
         </div>
       </div>
     </section>
