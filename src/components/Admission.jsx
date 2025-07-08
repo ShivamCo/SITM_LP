@@ -1,13 +1,14 @@
-import { useState, useEffect } from "react";
-import { Check, BookOpen, Users, Briefcase } from "lucide-react";
-import { AnimatePresence, motion } from "framer-motion";
+
+import { useEffect, useState } from "react"
+import { motion, AnimatePresence } from "framer-motion"
 
 const AdmissionSection = () => {
-  const [scriptLoaded, setScriptLoaded] = useState(false);
-  const [widgetLoaded, setWidgetLoaded] = useState(false);
+  const [scriptLoaded, setScriptLoaded] = useState(false)
+  const [widgetLoaded, setWidgetLoaded] = useState(false)
+  const [activeStep, setActiveStep] = useState(1)
 
  useEffect(() => {
-  let interval;
+   let interval;
 
   const checkWidgetLoaded = () => {
     const widgetElement = document.querySelector(".npf_wgts");
@@ -46,98 +47,81 @@ const AdmissionSection = () => {
 }, []);
 
 
+  const steps = [
+    { step: 1, title: "Register", content: "Create your account", icon: "1" },
+    { step: 2, title: "Verify", content: "Email & mobile", icon: "2" },
+    { step: 3, title: "Application", content: "Fill details", icon: "3" },
+    { step: 4, title: "Documents", content: "Upload required files", icon: "4" },
+    { step: 5, title: "Payment", content: "Pay fee", icon: "5" }
+  ]
+
   return (
-    <section id="begin-journey" className="py-12 px-12 md:py-16 sm:px-6 bg-white">
-      <div className="max-w-6xl mx-auto">
-        <div className="text-center mb-8 md:mb-12">
-          <span className="text-blue-600 font-semibold text-sm md:text-base">
-            ADMISSIONS {new Date().getFullYear()}
-          </span>
-          <h2 className="text-2xl sm:text-3xl font-bold text-gray-800 mt-2">
-            Begin Your Journey at SITM
-          </h2>
-          <div className="w-16 md:w-20 h-1 bg-blue-600 mx-auto mt-3 md:mt-4"></div>
+    <section className="py-12 bg-blue-50">
+      <div className="container mx-auto px-4 max-w-6xl">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <motion.h1 
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-3xl font-bold text-[#1d3557] mb-3"
+          >
+            Saroj Education Group
+          </motion.h1>
+          <motion.div 
+            initial={{ scaleX: 0 }}
+            animate={{ scaleX: 1 }}
+            className="w-24 h-1 bg-gradient-to-r from-[#e63946] to-[#1d3557] mx-auto rounded-full"
+          ></motion.div>
+          <p className="mt-4 text-gray-600">Begin your academic journey with us</p>
         </div>
 
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
-          {/* Application Process */}
-          <div className="order-1 lg:order-none">
-            <div className="bg-blue-50 p-4 sm:p-6 rounded-xl">
-              <h3 className="text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 text-blue-800">
-                Application Process
-              </h3>
-
-              <div className="space-y-6 sm:space-y-8">
-                {[
-                  {
-                    step: "1",
-                    title: "Register",
-                    description: "Create your account on our admission portal",
-                    icon: <Users className="text-blue-600" size={20} />,
-                  },
-                  {
-                    step: "2",
-                    title: "Verify",
-                    description: "Confirm your email & mobile number",
-                    icon: <Check className="text-blue-600" size={20} />,
-                  },
-                  {
-                    step: "3",
-                    title: "Application",
-                    description: "Fill in your personal and academic details",
-                    icon: <BookOpen className="text-blue-600" size={20} />,
-                  },
-                  {
-                    step: "4",
-                    title: "Documents",
-                    description: "Upload required files (mark sheets, ID proof, etc.)",
-                    icon: <Briefcase className="text-blue-600" size={20} />,
-                  },
-                  {
-                    step: "5",
-                    title: "Payment",
-                    description: "Pay the application fee online",
-                    icon: (
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-5 w-5 text-blue-600"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                      >
-                        <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z" />
-                        <path
-                          fillRule="evenodd"
-                          d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    ),
-                  },
-                ].map((item, index) => (
-                  <div key={index} className="flex items-start">
-                    <div className="bg-blue-100 p-2 rounded-full mr-3 sm:mr-4 flex-shrink-0">
-                      {item.icon}
-                    </div>
-                    <div>
-                      <div className="flex items-center">
-                        <span className="bg-blue-600 text-white rounded-full w-5 h-5 sm:w-6 sm:h-6 flex items-center justify-center text-xs sm:text-sm font-bold mr-2 sm:mr-3">
-                          {item.step}
-                        </span>
-                        <h4 className="font-semibold text-gray-800 text-sm sm:text-base">
-                          {item.title}
-                        </h4>
-                      </div>
-                      <p className="text-gray-600 mt-1 sm:mt-2 ml-7 sm:ml-9 text-xs sm:text-sm">
-                        {item.description}
-                      </p>
-                    </div>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Steps Section */}
+          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 h-fit">
+            <div className="flex items-center mb-6">
+              <div className="bg-[#1d3557] text-white p-2 rounded-lg mr-3">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+              </div>
+              <h2 className="text-xl font-semibold text-gray-800">Application Process</h2>
+            </div>
+            
+            <div className="space-y-3">
+              {steps.map((item) => (
+                <motion.div 
+                  key={item.step}
+                  whileHover={{ scale: 1.02 }}
+                  className={`flex items-center p-3 rounded-lg cursor-pointer transition-colors ${activeStep === item.step ? 'bg-blue-50 border border-blue-100' : 'hover:bg-gray-50'}`}
+                  onClick={() => setActiveStep(item.step)}
+                >
+                  <div className={`flex items-center justify-center w-9 h-9 rounded-full mr-3 ${activeStep === item.step ? 'bg-[#1d3557] text-white' : 'bg-gray-100 text-gray-600'}`}>
+                    <span className="text-sm">{item.icon}</span>
                   </div>
-                ))}
+                  <div>
+                    <h3 className="text-sm font-medium text-gray-800">{item.title}</h3>
+                    <p className="text-xs text-gray-500">{item.content}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <div className="mt-6 pt-4 border-t border-gray-200">
+              <div className="flex items-center">
+                <div className="bg-[#e63946] text-white p-2 rounded-full mr-3">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                  </svg>
+                </div>
+                <div>
+                  <p className="text-xs text-gray-500">Need help?</p>
+                  <a href="tel:9555699988" className="text-sm font-medium text-gray-800 hover:text-[#e63946]">+91 9555699988</a>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Application Form */}
+          {/* Form Section */}
           <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden flex flex-col h-[580px]">
             <div className="bg-gradient-to-r from-[#1d3557] to-[#e63946] p-4 text-white">
               <div className="flex items-center">
@@ -145,7 +129,7 @@ const AdmissionSection = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
                 <div>
-                  <h2 className="font-bold text-2xl">Admissions 2025</h2>
+                  <h2 className="font-bold text-2xl ">Admissions 2025</h2>
                   <p className="text-xs opacity-90">Limited seats available</p>
                 </div>
               </div>
@@ -193,7 +177,7 @@ const AdmissionSection = () => {
         </div>
       </div>
     </section>
-  );
-};
+  )
+}
 
-export default AdmissionSection;
+export default AdmissionSection
